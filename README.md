@@ -32,9 +32,9 @@ openwrt-ip-report/
 把 `server/` 下的三个文件上传到一台**有公网可访问域名或 IP** 的 PHP 主机(虚拟主机、VPS 均可),放在同一目录下,例如:
 
 ```
-https://你的域名/jk/xd/update_ip.php
-https://你的域名/jk/xd/get_ip.php
-https://你的域名/jk/xd/status.php
+https://你的域名/kd/update_ip.php
+https://你的域名/kd/get_ip.php
+https://你的域名/kd/status.php
 ```
 
 首次有请求进来时,会在同目录自动创建 `ip_data/` 文件夹用来存放记录和日志,**无需手动创建**,但要确保 PHP 对该目录有写权限。
@@ -64,7 +64,7 @@ chmod +x /usr/bin/report_ip.sh
 修改脚本开头的配置区:
 
 ```sh
-URL="https://你的域名/jk/xd/update_ip.php"
+URL="https://你的域名/kd/update_ip.php"
 TOKEN="改成和服务端一致的token"
 HOST="home1"          # 每个家庭/设备用不同名字区分
 WAN_IF_V4="pppoe-wan" # 需要根据实际情况确认, 见下方"如何确认接口名"
@@ -102,7 +102,7 @@ logread | grep report_ip
 访问网页确认服务端收到记录:
 
 ```
-https://你的域名/jk/xd/status.php
+https://你的域名/kd/status.php
 ```
 
 ## 如何确认接口名(WAN_IF_V4 / WAN_IF_V6)
