@@ -83,11 +83,33 @@ crontab -e
 */5 * * * * /usr/bin/report_ip.sh
 ```
 
+也可以不进编辑器,直接一条命令追加(避免手动编辑出错):
+
+```sh
+echo '*/5 * * * * /usr/bin/report_ip.sh' >> /etc/crontabs/root
+```
+
 重启 cron 服务使其生效:
 
 ```sh
 /etc/init.d/cron restart
 ```
+
+确认定时任务已经写入:
+
+```sh
+crontab -l
+```
+
+**或者用 LuCI 网页后台添加(不用 SSH):**
+
+登录路由器管理页面 → **系统(System)** → **计划任务(Scheduled Tasks)**,在文本框里加入一行:
+
+```
+*/5 * * * * /usr/bin/report_ip.sh
+```
+
+点击**保存并应用**即可,效果和命令行 `crontab -e` 完全一样(本质上改的是同一个文件 `/etc/crontabs/root`)。
 
 ### 3. 验证
 
